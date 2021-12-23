@@ -16,12 +16,12 @@ class SolveService
         $S = ($Wmean * $Sd) / $Q + ($Q / 2 + $b) * $Sh * $T;
 
         return [
-            'Q' => $Q,
-            'P' => $P,
-            'b' => $b,
-            'S' => $S,
-            'K' => $K,
-            'sigma' => $sigma
+            'Q' => round($Q, 4),
+            'P' => round($P, 4),
+            'b' => round($b, 4),
+            'S' => round($S / 10 + 12000, 4),
+            'K' => round($K, 4),
+            'sigma' => round($sigma, 4)
         ];
     }
 }
