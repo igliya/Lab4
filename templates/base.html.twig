@@ -1,19 +1,240 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
-
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
+        <title>Лабораторная работа №4</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="icon" type="image/png" href="favicon.png"/>
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="mx-auto">
+                <a class="navbar-brand" href="{{ path('home') }}">Якшина Ангелина., ПИ-18-1. Лабораторная работа №4</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto mx-auto">
+                        <li class="nav-item active">
+                            <a id="load-test1" class="nav-link" href="#">Загрузить тест №1</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a id="load-test2" class="nav-link" href="#">Загрузить тест №2</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a id="load-test3" class="nav-link" href="#">Загрузить тест №3</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <span style="font-size: 20px">Исходные данные</span>
+                    <form>
+                        <div class="row g-3 align-items-center mt-1">
+                            <div class="col-auto" style="width: 80px">
+                                <label for="Sd" class="col-form-label">Сд = </label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="Sd" name="Sd" class="form-control" aria-describedby="helpInline">
+                            </div>
+                            <div class="col-auto">
+                                <span id="helpInline" class="form-text">
+                                    расходы, связанные с поставкой материалов
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row g-3 align-items-center mt-1">
+                            <div class="col-auto" style="width: 80px">
+                                <label for="Sh" class="col-form-label">Сх = </label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="Sh" name="Sh" class="form-control" aria-describedby="helpInline">
+                            </div>
+                            <div class="col-auto">
+                                <span id="helpInline" class="form-text">
+                                    расходы на хранение единицы запаса
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row g-3 align-items-center mt-1">
+                            <div class="col-auto" style="width: 80px">
+                                <label for="T" class="col-form-label">T = </label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="T" name="T" class="form-control" aria-describedby="helpInline">
+                            </div>
+                            <div class="col-auto">
+                                <span id="helpInline" class="form-text">
+                                    интервал времени
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row g-3 align-items-center mt-1">
+                            <div class="col-auto" style="width: 80px">
+                                <label for="Wmean" class="col-form-label">Wср = </label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="Wmean" name="Wmean" class="form-control" aria-describedby="helpInline">
+                            </div>
+                            <div class="col-auto">
+                                <span id="helpInline" class="form-text">
+                                    средняя интенсивность спроса
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row g-3 align-items-center mt-1">
+                            <div class="col-auto" style="width: 80px">
+                                <label for="Wmax" class="col-form-label">Wmax = </label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="Wmax" name="Wmax" class="form-control" aria-describedby="helpInline">
+                            </div>
+                            <div class="col-auto">
+                                <span id="helpInline" class="form-text">
+                                    максимальная интенсивность спроса
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row g-3 align-items-center mt-1">
+                            <div class="col-auto" style="width: 80px">
+                                <label for="Wmin" class="col-form-label">Wmin = </label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="Wmin" name="Wmin" class="form-control" aria-describedby="helpInline">
+                            </div>
+                            <div class="col-auto">
+                                <span id="helpInline" class="form-text">
+                                    минимальная интенсивность спроса
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row g-3 align-items-center mt-1">
+                            <div class="col-auto" style="width: 80px">
+                                <label for="dt" class="col-form-label">Δt = </label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="dt" name="dt" class="form-control" aria-describedby="helpInline">
+                            </div>
+                            <div class="col-auto">
+                                <span id="helpInline" class="form-text">
+                                    среднее время доставки
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row g-3 align-items-center mt-1">
+                            <div class="col-auto" style="width: 80px">
+                                <label for="p" class="col-form-label">p = </label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="p" name="p" class="form-control" aria-describedby="helpInline">
+                            </div>
+                            <div class="col-auto">
+                                <span id="helpInline" class="form-text">
+                                    коэффициент риска
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row g-3 align-items-center mt-1">
+                            <div class="col-auto" style="width: 80px">
+                                <label for="Tpr" class="col-form-label">Tпр = </label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="Tpr" name="Tpr" class="form-control" aria-describedby="helpInline">
+                            </div>
+                            <div class="col-auto">
+                                <span id="helpInline" class="form-text"></span>
+                            </div>
+                        </div>
+                        <button id="calculate-button" class="btn btn-primary mt-3" type="submit">Рассчитать</button>
+                        <button id="clear-button" class="btn btn-outline-danger mt-3" type="submit">Очистить</button>
+                    </form>
+                </div>
+                <div class="col-sm">
+                    <span style="font-size: 20px">Результат</span>
+                    <form>
+                        <div class="row g-3 align-items-center mt-1">
+                            <div class="col-auto" style="width: 45px">
+                                <label for="Q" class="col-form-label">Q = </label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="Q" name="Q" class="form-control" aria-describedby="helpInline" readonly>
+                            </div>
+                            <div class="col-auto">
+                                <span id="helpInline" class="form-text">
+                                    объем заказа
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row g-3 align-items-center mt-1">
+                            <div class="col-auto" style="width: 45px">
+                                <label for="P" class="col-form-label">P = </label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="P" name="P" class="form-control" aria-describedby="helpInline" readonly>
+                            </div>
+                            <div class="col-auto">
+                                <span id="helpInline" class="form-text">
+                                    точка заказа
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row g-3 align-items-center mt-1">
+                            <div class="col-auto" style="width: 45px">
+                                <label for="b" class="col-form-label">b = </label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="b" name="b" class="form-control" aria-describedby="helpInline" readonly>
+                            </div>
+                            <div class="col-auto">
+                                <span id="helpInline" class="form-text">
+                                    страховой запас
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row g-3 align-items-center mt-1">
+                            <div class="col-auto" style="width: 45px">
+                                <label for="S" class="col-form-label">S = </label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="S" name="S" class="form-control" aria-describedby="helpInline" readonly>
+                            </div>
+                            <div class="col-auto">
+                                <span id="helpInline" class="form-text">
+                                    общие затраты на интервале T
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row g-3 align-items-center mt-1">
+                            <div class="col-auto" style="width: 45px">
+                                <label for="K" class="col-form-label">K = </label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="K" name="K" class="form-control" aria-describedby="helpInline" readonly>
+                            </div>
+                            <div class="col-auto">
+                                <span id="helpInline" class="form-text">
+                                    квантиль
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row g-3 align-items-center mt-1">
+                            <div class="col-auto" style="width: 45px">
+                                <label for="sigma" class="col-form-label">σ = </label>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" id="sigma" name="sigma" class="form-control" aria-describedby="helpInline" readonly>
+                            </div>
+                            <div class="col-auto">
+                                <span id="helpInline" class="form-text"></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </body>
 </html>
